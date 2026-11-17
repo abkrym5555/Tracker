@@ -1,6 +1,7 @@
 package com.example.tracker.data
 
-import androidx.room3.*
+import androidx.room.*
+import androidx.room.Dao
 
 @Dao
 interface AppDao {
