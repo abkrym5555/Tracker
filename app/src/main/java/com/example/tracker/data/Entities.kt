@@ -1,10 +1,10 @@
 package com.example.tracker.data
 
-import androidx.room3.ColumnInfo
-import androidx.room3.ForeignKey
-import androidx.room3.Index
-import androidx.room3.PrimaryKey
-import androidx.room3.Entity
+import androidx.room.ColumnInfo
+import androidx.room.ForeignKey
+import androidx.room.Index
+import androidx.room.PrimaryKey
+import androidx.room.Entity
 
 @Entity(tableName = "users")
 data class User(
@@ -36,7 +36,7 @@ data class Category(
 )
 data class Expense(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    // صاحب المصروف (id من جدول users)
+
     @ColumnInfo(defaultValue = "0") val userId: Int = 0,
     val categoryId: Int,
     val title: String,
