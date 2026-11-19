@@ -11,18 +11,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tracker">
+
+        <!-- شاشة تسجيل الدخول تبدأ أولاً -->
         <activity
-            android:name=".MainActivity"
+            android:name=".AuthActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Tracker"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- الشاشة الرئيسية (Dashboard) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <!-- شاشة التعديل والحذف -->
+        <activity
+            android:name=".EditExpenseActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
