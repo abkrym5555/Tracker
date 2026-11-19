@@ -12,9 +12,7 @@ import com.example.tracker.ui.auth.AuthRoute
 import com.example.tracker.ui.auth.AuthViewModel
 import com.example.tracker.ui.theme.ExpenseTrackerTheme
 
-/**
- * شاشة تسجيل الدخول / إنشاء حساب — بقت Compose برضه.
- */
+
 class AuthActivity : ComponentActivity() {
 
     private val viewModel: AuthViewModel by viewModels()
@@ -23,7 +21,7 @@ class AuthActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // خلفية الشاشة غامقة، فأيقونات شريط الحالة لازم تكون فاتحة عشان تبان
+
         WindowCompat.getInsetsController(window, window.decorView).apply {
             isAppearanceLightStatusBars = false
             isAppearanceLightNavigationBars = false

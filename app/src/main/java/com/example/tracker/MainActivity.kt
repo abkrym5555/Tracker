@@ -12,10 +12,7 @@ import com.example.tracker.ui.main.MainRoute
 import com.example.tracker.ui.main.MainViewModel
 import com.example.tracker.ui.theme.ExpenseTrackerTheme
 
-/**
- * الشاشة الرئيسية بقت Compose بالكامل.
- * الـ Activity دورها بس: الجلسة + الانتقالات + الـ Share + إنشاء الـ ViewModel.
- */
+
 class MainActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by viewModels()
@@ -24,19 +21,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // الشاشة فاتحة، فأيقونات شريط الحالة لازم تكون غامقة
+
         WindowCompat.getInsetsController(window, window.decorView).apply {
             isAppearanceLightStatusBars = true
             isAppearanceLightNavigationBars = true
         }
 
-        // لو الشاشة اتفتحت من غير تسجيل دخول (مثلاً من شير خارجي) نرجّعه للـ login
+
         if (SessionPrefs(this).username.isEmpty()) {
             goToAuth()
             return
         }
 
-        // لو التطبيق اتفتح من شير نص، نحط النص في خانة العنوان
+
         val sharedTitle = if (savedInstanceState == null && intent?.action == Intent.ACTION_SEND) {
             intent.getStringExtra(Intent.EXTRA_TEXT)?.trim()?.take(60).orEmpty()
         } else {

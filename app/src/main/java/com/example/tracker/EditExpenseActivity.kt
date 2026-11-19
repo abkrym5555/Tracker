@@ -41,7 +41,7 @@ class EditExpenseActivity : AppCompatActivity() {
             return
         }
 
-        // بنقرأ المصروف من الداتابيز (مصدر الحقيقة) بدل ما نعتمد على الـ extras
+
         lifecycleScope.launch {
             val expense = withContext(Dispatchers.IO) { db.appDao().getExpenseById(expenseId) }
             if (expense == null) {

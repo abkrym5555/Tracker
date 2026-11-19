@@ -30,15 +30,13 @@ import kotlin.math.abs
 
 private val moneyFormat = DecimalFormat("#,##0.0#", DecimalFormatSymbols(Locale.US))
 
-/** بيحوّل الرقم لعملة بالشكل القديم: $1,200.5 / -$12 */
+
 fun money(value: Double): String {
     val formatted = moneyFormat.format(abs(value))
     return if (value < 0) "-\$$formatted" else "\$$formatted"
 }
 
-/**
- * خانة إدخال بشكل موحّد على مستوى التطبيق (بديل bg_input_outlined.xml).
- */
+
 @Composable
 fun AppTextField(
     value: String,

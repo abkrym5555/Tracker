@@ -57,6 +57,12 @@ configurations
     .matching { it.name.endsWith("CompileClasspath") || it.name.startsWith("kapt") }
     .configureEach {
         resolutionStrategy.force("org.jetbrains.kotlin:kotlin-stdlib:2.0.21")
+        // Room probes `androidx.lifecycle.LiveData` for every suspend DAO method.
+        // LiveData ships with Kotlin 2.1 metadata (unreadable by Room 2.6.1) and
+        // this app does not use it, so keep it off the compile/kapt classpath only.
+        exclude(group = "androidx.lifecycle", module = "lifecycle-livedata-core")
+        exclude(group = "androidx.lifecycle", module = "lifecycle-livedata")
+        exclude(group = "androidx.lifecycle", module = "lifecycle-livedata-ktx")
     }
 
 dependencies {
@@ -67,6 +73,9 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
