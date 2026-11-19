@@ -2,4 +2,10 @@
 <resources>
 
     <style name="Theme.Tracker" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.ExpenseTracker" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">#6366F1</item>
+        <item name="android:colorPrimaryDark">#4F46E5</item>
+        <item name="android:colorAccent">#6366F1</item>
+    </style>
 </resources>
