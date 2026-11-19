@@ -81,13 +81,13 @@ fun MainRoute(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    // كل مرة نرجع للشاشة (بعد التعديل أو الحذف) بنقرأ البيانات من جديد
+
     LifecycleResumeEffect(Unit) {
         viewModel.refresh()
         onPauseOrDispose { }
     }
 
-    // لو الجلسة باظت أو المستخدم عمل خروج
+
     LaunchedEffect(state.mustReauthenticate) {
         if (state.mustReauthenticate) onRequireAuth()
     }
@@ -178,11 +178,11 @@ fun MainScreen(
             fontSize = 14.sp
         )
 
-        // ===== كارت الملخص =====
+
         Spacer(Modifier.height(18.dp))
         SummaryCard(state)
 
-        // ===== تنبيه تجاوز الميزانية =====
+
         AnimatedVisibility(
             visible = state.isOverBudget,
             enter = fadeIn() + expandVertically(),
@@ -194,7 +194,7 @@ fun MainScreen(
             )
         }
 
-        // ===== تحديد الميزانية =====
+
         Spacer(Modifier.height(14.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -235,7 +235,7 @@ fun MainScreen(
             }
         }
 
-        // ===== إضافة سريعة =====
+
         Spacer(Modifier.height(14.dp))
         QuickAddCard(
             title = expenseTitle,
@@ -255,7 +255,7 @@ fun MainScreen(
             }
         )
 
-        // ===== قائمة الحركات =====
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -340,7 +340,7 @@ fun MainScreen(
     }
 }
 
-/** أيقونة الهيدر — نفس مقاسات الـ XML القديمة (32dp مع padding 5dp). */
+
 @Composable
 private fun ActionIcon(
     @DrawableRes icon: Int,
@@ -426,7 +426,7 @@ private fun SummaryCard(state: MainUiState) {
     }
 }
 
-/** الشريط اللي كان ProgressBar + progress_budget(_over).xml */
+
 @Composable
 private fun BudgetBar(fraction: Float, isOverBudget: Boolean) {
     val barColor = if (isOverBudget) AppColors.Red500 else AppColors.Green500
@@ -447,7 +447,7 @@ private fun BudgetBar(fraction: Float, isOverBudget: Boolean) {
     }
 }
 
-/** التنبيه الأحمر اللي كان bg_over_budget.xml + ic_warning */
+
 @Composable
 private fun OverBudgetNotice(overBy: String, modifier: Modifier = Modifier) {
     Row(
@@ -549,7 +549,7 @@ private fun QuickAddCard(
     }
 }
 
-/** صف واحد في قائمة الحركات — بديل item_expense.xml */
+
 @Composable
 private fun ExpenseRow(expense: Expense, onClick: () -> Unit) {
     Card(
